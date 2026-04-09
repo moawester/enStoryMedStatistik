@@ -1,4 +1,4 @@
-createMenu('Statistics Template JS', [
-  { name: 'Kom igång!', script: 'startpage.js' },
-  { name: 'Övningsinstruktioner', script: 'instructions.js' }
+createMenu('Medel Inkomst', [
+  { name: 'lön', script: 'startpage.js' },
+  { name: 'lön2', script: 'instructions.js' }
 ]);
