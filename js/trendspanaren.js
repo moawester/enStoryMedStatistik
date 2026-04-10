@@ -1,6 +1,5 @@
 addMdToPage(`
-  ### Medel- och medianårsinkomst i tusentals kronor, per kommun, från MongoDB
-  (Endast de 25 första av många poster.)
+# Trendspaneren!!!!!
   `);
 dbQuery.use('kommun-info-mongodb');
 let income = await dbQuery.collection('incomeByKommun').find({}).limit(100);
