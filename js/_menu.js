@@ -3,5 +3,6 @@ createMenu('Statistics Template JS', [
   { name: 'Övningsinstruktioner', script: 'instructions.js' },
   { name: 'Trendspanaren', script: 'trendspanaren.js' },
   { name: 'Generationsklyftan', script: 'generationsklyftan.js' },
-  { name: 'statstik', script: 'utbildningsAnalys.js' }
-]);
+  { name: 'statstik', script: 'utbildningsAnalys.js' },
+  { name: 'Medelålder analys', script: 'medelalder_analys.js' }
+]); 
