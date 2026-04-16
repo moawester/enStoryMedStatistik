@@ -1,0 +1,6 @@
+# Python requirements for this project
+# No additional packages are currently required.
+# Install packages with:
+#   .venv/bin/python -m pip install <package>
+# Freeze installed packages with:
+#   .venv/bin/python -m pip freeze > requirements.txt
