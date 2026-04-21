@@ -3,4 +3,4 @@ createMenu('Statistik rikstadsval geografi.', [
   { name: 'Trendspanaren', script: 'trendspanaren.js' },
   { name: 'Regionala skillnader', script: 'regional_analys.js' },
   { name: 'Stad vs Landsbygd', script: 'tathet_analys.js' }
-]); 
+]);
