@@ -17,11 +17,17 @@ let kommunInfo = await dbQuery.collection('kommunInfo').find({}).limit(5);
 console.log('kommunInfo from MongoDB', kommunInfo);
 
 dbQuery.use('riksdagsval-neo4j');
-let voteData = await dbQuery('MATCH (p:Partiresultat) RETURN p.kommun, p.parti, p.roster LIMIT 15');
-console.log('voteData from Neo4j', voteData);
+
+let voteData = await dbQuery(`
+    MATCH (p:Partiresultat) 
+    RETURN p.kommun, p.parti, p.roster2018, p.roster2022 
+    LIMIT 15
+`);
+
+console.log('voteData from Neo4j:', voteData);
 
 dbQuery.use('tatorter.db');
-let tatortData = await dbQuery('SELECT * FROM municipality_statistics');
+let tatortData = await dbQuery('SELECT * FROM municipality_statistics LIMIT 25');
 console.log('Tatorter from SQLite', tatortData);
 
 
