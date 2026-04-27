@@ -30,3 +30,38 @@ Steg 3 (Analys): Hitta de 5 kommuner i Sverige där ett parti ökade mest. Ligge
 Steg 4 (Diagram): Ett ComboChart eller LineChart som visar hur stödet för ett visst parti har rört sig i 3 olika geografiska zoner (t.ex. Norrland, Svealand, Götaland).
 Text på sidan: Analysera "årets raket". "Vi ser att Parti X vann mest mark i geografiska områden med låg befolkningstäthet..."
   `)
+
+dbQuery.use('counties-sqlite');
+let countyInfo = await dbQuery('SELECT * FROM countyInfo LIMIT 10');
+console.log('Counties from SQLite', countyInfo);
+
+dbQuery.use('geo-mysql');
+let geoData = await dbQuery('SELECT * FROM geoData LIMIT 10');
+console.log('geoData from mysql', geoData);
+
+dbQuery.use('kommun-info-mongodb');
+let kommunInfo = await dbQuery.collection('kommunInfo').find({}).limit(10);
+console.log('kommunInfo from MongoDB', kommunInfo);
+
+dbQuery.use('riksdagsval-neo4j');
+
+let voteData = await dbQuery(`
+    MATCH (p:Partiresultat) 
+    RETURN p.kommun, p.parti, p.roster2018, p.roster2022 
+    LIMIT 10
+`);
+
+console.log('voteData from Neo4j:', voteData);
+
+dbQuery.use('tatorter.db');
+let tatortData = await dbQuery('SELECT * FROM municipality_statistics LIMIT 10');
+console.log('Tatorter from SQLite', tatortData);
+
+
+tableFromData({ data: countyInfo });
+
+tableFromData({ data: geoData });
+
+tableFromData({ data: voteData });
+
+tableFromData({ data: tatortData });
