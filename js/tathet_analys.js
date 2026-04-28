@@ -1,18 +1,26 @@
-addMdToPage(`
-# Stad vs landsbygd
-
-Här undersöker vi om kommunernas täthet kan ha samband med hur röstningen förändrades mellan riksdagsvalen 2018 och 2022.
-
-Vi delar upp kommuner i:
-- stad (högst täthet)
-- landsbygd (lägst täthet)
-
-Sedan jämför vi hur stödet för partier förändrats mellan 2018 och 2022.
+addToPage(`
+<div style="max-width: 850px; margin: 0 auto 30px auto; padding: 28px; border-radius: 14px; background:#f5f5f5;">
+  <h1 style="margin-top:0;">Stad vs landsbygd</h1>
+  <p style="font-size:18px; line-height:1.6;">
+    Spelar det någon roll om man bor i en tät stad eller i en gles landsbygdskommun?
+    Här undersöker vi om befolkningstäthet kan kopplas till hur röstningen förändrades mellan 2018 och 2022.
+  </p>
+</div>
 `);
 
 addMdToPage(`
+Vi delar upp kommunerna i två grupper:
+
+- de 10 mest tätbefolkade kommunerna (stad)
+- de 10 minst tätbefolkade kommunerna (landsbygd)
+
+Därefter jämför vi förändringen i partistöd mellan grupperna.
+
+---
+
 ## Hypotes
-Vi tror att röstförändringar skiljer sig mellan stad och landsbygd eftersom livsvillkor och befolkning skiljer sig.
+
+Vi tror att röstförändringar skiljer sig mellan stad och landsbygd, eftersom livsvillkor, ekonomi och befolkningssammansättning ofta ser olika ut i tätbefolkade och glesbefolkade kommuner.
 `);
 
 function normalizeName(name) {
@@ -178,6 +186,16 @@ Beräkningen är: andel röster 2022 minus andel röster 2018.
     }
   });
 
+  addMdToPage(`
+## Tolkning
+
+Diagrammet visar tydliga skillnader mellan stad och landsbygd.
+
+Sverigedemokraterna ökar mer i landsbygden än i städerna, medan partier som Centerpartiet och Vänsterpartiet minskar mer i landsbygden.
+
+Detta tyder på att politiska förändringar inte sker jämnt över hela landet.
+`);
+
   addMdToPage(`## Resultat`);
 
   tableFromData({
@@ -188,27 +206,8 @@ Beräkningen är: andel röster 2022 minus andel röster 2018.
     }))
   });
 
-  const sd = results.find(r =>
-    r.party.toLowerCase().includes("sverigedemokraterna") ||
-    r.party.toLowerCase().includes("sd")
-  );
-
-  let summary = "Vi ser skillnader mellan stad och landsbygd i hur partier förändrats.";
-
-  if (sd) {
-    summary = `I denna analys förändrades stödet för Sverigedemokraterna med ${sd.land.toFixed(2)} procentenheter i landsbygden jämfört med ${sd.stad.toFixed(2)} i städerna.`;
-  }
-
   addMdToPage(`
-## Slutsats
-
-Resultatet visar att förändringen i partistöd skiljer sig mellan stad och landsbygd.
-
-I vår analys ökade stödet för Sverigedemokraterna betydligt mer i landsbygdskommuner (7,09 procentenheter) jämfört med i stadskommuner (1,03 procentenheter). Samtidigt minskade till exempel Centerpartiet och Vänsterpartiet mer i landsbygden än i städerna.
-
-Detta tyder på att befolkningstäthet kan ha ett samband med hur röstningen förändras. Skillnader i livsvillkor, ekonomi och demografi mellan stad och landsbygd kan påverka hur människor röstar.
-
-Samtidigt är det viktigt att komma ihåg att detta är en förenklad analys. Andra faktorer, som utbildningsnivå, ålder och regionala skillnader, kan också påverka valresultatet.
+#et viktigt att komma ihåg att detta är en förenklad analys. Andra faktorer, som utbildningsnivå, ålder och regionala skillnader, kan också påverka valresultatet.
 `);
 
 } catch (e) {
@@ -218,4 +217,39 @@ Samtidigt är det viktigt att komma ihåg att detta är en förenklad analys. An
 
 ${e.message}
 `);
-} 
+}
+addMdToPage(`
+---
+
+## Källor och data
+
+### Valdata (riksdagsval-neo4j)
+Valdatan bygger på statistik från SCB:s riksdagsval 2018 och 2022.
+
+**Trovärdighet:**  
+SCB är en statlig myndighet och en mycket tillförlitlig källa.
+
+**Datakvalitet:**  
+Datan är strukturerad och detaljerad på kommunnivå, men visar endast resultat – inte orsaker till hur människor röstar.
+
+---
+
+### Befolkningstäthet (tatorter-sqlite)
+
+Data om befolkningstäthet bygger på statistik från SCB och används för att dela in kommuner i stad och landsbygd.
+
+**Trovärdighet:**  
+SCB är en statlig myndighet och en mycket tillförlitlig källa, vilket gör datan trovärdig.
+
+**Datakvalitet:**  
+Datan ger en tydlig bild av hur tätbefolkade olika kommuner är och är relevant för geografisk analys.  
+Samtidigt fångar den inte alla faktorer som kan påverka röstning, till exempel ekonomi, utbildningsnivå eller ålder.
+
+### Begränsningar
+
+- Analysen fokuserar främst på geografi  
+- Andra faktorer (ålder, inkomst, utbildning) tas inte med  
+- Samband kan visas, men inte säkra orsaker  
+
+---
+`); 
