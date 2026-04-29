@@ -179,7 +179,7 @@ try {
     }))
     .filter(row => row.party && (row.stad !== 0 || row.land !== 0))
     .sort((a, b) => Math.max(Math.abs(b.stad), Math.abs(b.land)) - Math.max(Math.abs(a.stad), Math.abs(a.land)))
-    .slice(0, 6);
+    .slice(0, 8);
 
   if (!results.length) {
     throw new Error("Ingen partistatistik kunde beräknas.");
