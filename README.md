@@ -91,22 +91,6 @@ Dina SQLite-databasfiler lägger du i undermappen **sqlite-dbs**! Övriga databa
 
 Mallen stöjder **SQLite**, **MySQL**, **MongoDB** och **Neo4j**.
 
-#### Exempel, endast SQLite-databaser, databases-in-use.json
-
-```js
-[
-  {
-    "name": "temp-and-rainfall",
-    "type": "sqlite",
-    "file": "smhi-temp-and-rainfall-malmo.sqlite3"
-  },
-  {
-    "name": "counties-sqlite",
-    "type": "sqlite",
-    "file": "counties.sqlite3"
-  }
-]
-```
 
 #### Exempel, flera olika databastyper
 I detta exempel har vi "maskat" känsliga uppgifter, så den här koden kan du inte använda rakt av. *Om du är i en undervisningssitutation, fråga din lärare om det finns  en version av filen du kan få ta del av (som ev. kopplar upp dig mot molndatabaser)!*
@@ -117,48 +101,6 @@ Här kan du se att:
 * Du för alla andra typer av databaser, anger s.k. **credentials**.
   * För **mysql** och **neo4j**-databaser består credentials av en *host* (ip-nummer), *port*, användarnamn- och lösenord för databasanvändaren (*user* och *password*), samt databasens namn på databasservern, *database*.
   * För **mongodb**-databaser fungerar det lite annorlunda, här är den mesta informationen kring uppkopplingen ihopbakad i en s.k. *connectionString* och utöver detta anger du bara databasens namn på databasservern, *database*.
-
-```js
-[
-  {
-    "name": "counties-sqlite",
-    "type": "sqlite",
-    "file": "counties.sqlite3"
-  },
-  {
-    "name": "geo-mysql",
-    "type": "mysql",
-    "credentials": {
-      "host": "35.45.72.107",
-      "port": 9873,
-      "user": "kalle",
-      "password": "anka",
-      "database": "ankeborgs-geografi"
-    }
-  },
-  {
-    "name": "riksdagsval-neo4j",
-    "type": "neo4j",
-    "credentials": {
-      "host": "35.45.72.107",
-      "port": 5421,
-      "user": "kajsa",
-      "password": "anka",
-      "database": "ank-politik"
-    }
-  },
-    {
-    "name": "kommun-info-mongodb",
-    "type": "mongodb",
-    "credentials": {
-      "connectionString": "mongodb+srv://joakimvon:supersecret@atlascluster.stx8vel.mongodb.net/?retryWrites=true&w=majority&appName=StortOchSmatt",
-      "database": "kommun-info"
-    }
-  },
-]
-```
-
-### Filer utanför mappar
 
 ![Filer utanför mappar](backend/showDocs/images/file-structure-loose-files.png)
 
@@ -298,31 +240,6 @@ let data = await dbQuery(dbQuery);
 >
 >Om du inte anropar **dbQuery.use** utan ställer frågan direkt med **dbQuery** så kommer den första databas du har deklarerat i filen **databases/databases-in-use.json** att användas!
 
-#### Exempel
-Nedan ser du exempel på hur anrop till olika typer av databaser kan se ut.
-
-```js
-dbQuery.use('counties-sqlite');
-let countyInfo = await dbQuery('SELECT * FROM countyInfo');
-console.log('countyInfo', countyInfo);
-
-dbQuery.use('geo-mysql');
-let geoData = await dbQuery('SELECT * FROM geoData LIMIT 25');
-console.log('geoData from mysql', geoData);
-
-dbQuery.use('kommun-info-mongodb');
-let income = await dbQuery.collection('incomeByKommun').find({}).limit(25);
-console.log('income from mongodb', income);
-
-dbQuery.use('kommun-info-mongodb');
-let ages = await dbQuery.collection('ageByKommun').find({}).limit(25);
-console.log('ages from mongodb', ages);
-
-dbQuery.use('riksdagsval-neo4j');
-let electionResults =
-  await dbQuery('MATCH (n:Partiresultat) RETURN n LIMIT 25');
-console.log('electionResults from neo4j', electionResults);
-```
 
 ### addToPage
 
