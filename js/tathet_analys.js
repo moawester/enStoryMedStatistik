@@ -12,6 +12,7 @@ addToPage(`
 <div style="max-width: 900px; margin: 0 auto; display:grid; gap:18px;">
   <div style="background:#ffffff; padding:24px; border-radius:14px; box-shadow:0 4px 12px rgba(0,0,0,0.08);">
     <h2 style="margin-top:0;">Metod och hypotes</h2>
+    <p>Kommunerna är utvalda baserat på befolkningstäthet från SCB. För att sidan ska fungera stabilt hos alla i gruppen används urvalet direkt i koden.</p>
     <p>Vi delar upp kommunerna i två grupper:</p>
     <ul>
       <li>de 10 mest tätbefolkade kommunerna (stad)</li>
@@ -41,26 +42,35 @@ function average(arr) {
   return arr.length ? arr.reduce((a, b) => a + b, 0) / arr.length : 0;
 }
 
+// Täthetsurvalet är framtaget från SCB/tatorter-sqlite.
+// För att sidan ska fungera stabilt hos alla i gruppen används urvalet direkt här.
+const cityRows = [
+  { kommun: "Sundbyberg" },
+  { kommun: "Stockholm" },
+  { kommun: "Solna" },
+  { kommun: "Malmö" },
+  { kommun: "Järfälla" },
+  { kommun: "Lidingö" },
+  { kommun: "Sollentuna" },
+  { kommun: "Göteborg" },
+  { kommun: "Danderyd" },
+  { kommun: "Täby" }
+];
+
+const ruralRows = [
+  { kommun: "Arjeplog" },
+  { kommun: "Jokkmokk" },
+  { kommun: "Sorsele" },
+  { kommun: "Åsele" },
+  { kommun: "Pajala" },
+  { kommun: "Vilhelmina" },
+  { kommun: "Storuman" },
+  { kommun: "Dorotea" },
+  { kommun: "Härjedalen" },
+  { kommun: "Älvdalen" }
+];
+
 try {
-  dbQuery.use("tatorter-sqlite");
-
-  let densityDataRaw = await dbQuery(`
-    SELECT municipalityName AS kommun, populationDensity2022 AS density
-    FROM municipality_statistics
-  `);
-
-  let densityData = Array.isArray(densityDataRaw)
-    ? densityDataRaw
-    : (densityDataRaw?.results || densityDataRaw?.data || []);
-
-  if (!densityData || densityData.length === 0) {
-    throw new Error("Ingen täthetsdata hittades.");
-  }
-
-  let sorted = densityData.sort((a, b) => Number(b.density) - Number(a.density));
-  let cityRows = sorted.slice(0, 10);
-  let ruralRows = sorted.slice(-10).reverse();
-
   addToPage(`
   <div style="max-width: 900px; margin: 18px auto; background:#f8fafc; padding:24px; border-radius:14px;">
     <h2 style="margin-top:0;">Utvalda kommuner</h2>
@@ -246,8 +256,8 @@ try {
     <p><b>Trovärdighet:</b> SCB är en statlig myndighet och en mycket tillförlitlig källa.</p>
     <p><b>Datakvalitet:</b> Datan är strukturerad och detaljerad på kommunnivå, men visar endast resultat – inte orsaker till hur människor röstar.</p>
 
-    <h3>Befolkningstäthet (tatorter-sqlite)</h3>
-    <p>Data om befolkningstäthet bygger på statistik från SCB och används för att dela in kommuner i stad och landsbygd.</p>
+    <h3>Befolkningstäthet</h3>
+    <p>Kommunurvalet bygger på befolkningstäthet från SCB/tatorter-sqlite och används för att dela in kommuner i stad och landsbygd.</p>
     <p><b>Trovärdighet:</b> SCB är en statlig myndighet och en mycket tillförlitlig källa, vilket gör datan trovärdig.</p>
     <p><b>Datakvalitet:</b> Datan ger en tydlig bild av hur tätbefolkade olika kommuner är och är relevant för geografisk analys. Samtidigt fångar den inte alla faktorer som kan påverka röstning, till exempel ekonomi, utbildningsnivå eller ålder.</p>
 
@@ -267,4 +277,4 @@ try {
 
 ${e.message}
 `);
-}
+} 
