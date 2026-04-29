@@ -105,17 +105,49 @@ addToPage(`
   </div>
 
   <div style="background:#f1f5f9; padding:24px; border-radius:14px;">
-    <h2 style="margin-top:0;">Källor och begränsningar</h2>
-    <p><b>SCB – Riksdagsval 2018 & 2022:</b> valdata per kommun och parti.</p>
+  <h2 style="margin-top:0;">Källor och begränsningar</h2>
 
+  <h3>Länsinfo (SQLite)</h3>
+  <p>
+    Information om Sveriges län används som grund för regional indelning.
+  </p>
+  <p><strong>Trovärdighet:</strong> Källan består av allmänt etablerad fakta om länsindelning. Eftersom datan kommer från Wikipedia och inte kommer direkt från en myndighet bör den betraktas som relativt tillförlitlig men inte lika stark som officiella källor.</p>
+  <p><strong>Datakvalitet:</strong> Datan ger en tydlig översikt över länens struktur. Mindre variationer eller uppdateringar kan förekomma beroende på ursprung.</p>
 
-    <p><b>Begränsningar:</b></p>
-    <ul>
-      <li>Analysen fokuserar främst på geografiska faktorer.</li>
-      <li>Andra variabler som inkomst, utbildning och ålder inkluderas inte fullt ut.</li>
-      <li>Resultaten visar samband, men inte säkra orsaker.</li>
-    </ul>
-  </div>
+  <h3>Statistik om medelåldrar och medel-/medianinkomst (MongoDB)</h3>
+  <p>
+    Datan bygger på demografisk och ekonomisk statistik för Sveriges kommuner.
+  </p>
+  <p><strong>Trovärdighet:</strong> Uppgifterna baseras på statistik från SCB, en statlig och mycket tillförlitlig myndighet.</p>
+  <p><strong>Datakvalitet:</strong> Materialet är välstrukturerat och detaljerat och lämpar sig för analyser av befolkning och inkomstnivåer. </p>
 
-</div>
+  <h3>Statistik kring riksdagsval 2018 och 2022 (Neo4j)</h3>
+  <p>
+    Valdatan bygger på officiella resultat från riksdagsvalen 2018 och 2022.
+  </p>
+  <p><strong>Trovärdighet:</strong> Valresultat från svenska myndigheter är mycket tillförlitliga.</p>
+  <p><strong>Datakvalitet:</strong> Resultaten är exakta och detaljerade på kommunnivå, men visar endast vad människor röstat på – inte varför.</p>
+
+  <h3>Geodata kring tätorter, kommuner och län (DBeaver)</h3>
+  <p>
+    Geodatan omfattar kommungränser, tätorter och län. Ursprunget är inte helt fastställt, men sannolikt baserat på material från nationell kartdata.
+  </p>
+  <p><strong>Trovärdighet:</strong> Om datan kommer från officiell kartmyndighet är trovärdigheten hög. Vid okänt ursprung bör dock viss försiktighet tillämpas.</p>
+  <p><strong>Datakvalitet:</strong> Datan är lämplig för geografiska analyser, men kvaliteten kan variera beroende på den exakta källan.</p>
+
+  <h3>Befolkningstäthet (SQLite)</h3>
+  <p>
+    Kommunurvalet bygger på befolkningstäthet och används för att dela in kommuner i stads- och landsbygdskategorier.
+  </p>
+  <p><strong>Trovärdighet:</strong> SCB är en statlig myndighet och en mycket tillförlitlig källa, vilket gör datan trovärdig.</p>
+  <p><strong>Datakvalitet:</strong> Datan ger en tydlig bild av hur tätbefolkade olika kommuner är och är relevant för geografisk analys. Samtidigt fångar den inte alla faktorer som kan påverka röstning.</p>
+
+  <h3>Begränsningar</h3>
+  <ul>
+    <li>Analysen fokuserar främst på geografi och demografi.</li>
+    <li>Faktorer som utbildning, ålder eller inkomst ingår inte konsekvent i alla dataset.</li>
+    <li>Datan kan visa mönster och samband, men inte fastställa direkta orsaker.</li>
+  </ul>
+</section>
+    </div>
 `);

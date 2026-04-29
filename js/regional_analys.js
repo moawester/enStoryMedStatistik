@@ -12,15 +12,13 @@ background:linear-gradient(135deg,#0f172a,#1e293b);color:white;">
 `);
 
 
-
-/* -------------------------  2018  ------------------------- */
-
 addMdToPage(`
-<div style="max-width:900px;margin:40px auto;padding:24px;background:#c1aac7;border-radius:14px;">
+<div style="max-width:900px;margin:40px auto;padding:24px;background: #c0aec4;border-radius:14px;">
   <h3>Valresultatet 2018</h3>
 
   <p>
     2018 års resultat visar tydliga skillnader mellan länen. 
+  <p>
     <b>Stockholm</b> hade ett högre stöd för Miljöpartiet och Vänsterpartiet än de två andra länen,
     samtidigt som Moderaterna och Socialdemokraterna låg något närmare varandra.
   </p>
@@ -45,11 +43,8 @@ addMdToPage(`
 `);
 
 
-
-/* -------------------------  2022  ------------------------- */
-
 addMdToPage(`
-<div style="max-width:900px;margin:40px auto;padding:24px;background:#c1aac7;border-radius:14px;">
+<div style="max-width:900px;margin:40px auto;padding:24px;background: #c0aec4;border-radius:14px;">
   <h3>Valresultatet 2022</h3>
 
   <p>
@@ -78,11 +73,8 @@ addMdToPage(`
 `);
 
 
-
-/* -------------------------  Förändring  ------------------------- */
-
 addMdToPage(`
-<div style="max-width:900px;margin:40px auto;padding:24px;background:#c1aac7;border-radius:14px;">
+<div style="max-width:900px;margin:40px auto;padding:24px;background: #c0aec4;border-radius:14px;">
   <h3>Förändringar mellan 2018 och 2022</h3>
 
   <p>
@@ -112,11 +104,8 @@ addMdToPage(`
 `);
 
 
-
-/* -------------------------  Slutsats  ------------------------- */
-
 addMdToPage(`
-<div style="max-width:900px;margin:40px auto;padding:24px;background:#0f172a;color:white;border-radius:14px;">
+<div style="max-width:900px;margin:40px auto;padding:24px;background: #a89ff1;border-radius:14px;">
   <h3>Slutsatser</h3>
 
   <p>
@@ -142,8 +131,6 @@ addMdToPage(`
   </p>
 </div>
 `);
-
-
 
 
 const selectedCounties = ["Stockholm", "Skåne", "Norrbotten"];
@@ -384,3 +371,4 @@ google.charts.setOnLoadCallback(async () => {
   drawSingleChart("visu2022", "Valresultat 2022", rows2022);
   drawChangeChart("visuChange", "Förändring 2018 → 2022 ", changeRows);
 });
+
