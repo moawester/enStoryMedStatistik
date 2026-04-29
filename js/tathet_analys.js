@@ -49,7 +49,11 @@ try {
     FROM municipality_statistics
   `);
 
-  let sorted = densityData.sort((a, b) => b.density - a.density);
+  let densityRows = Array.isArray(densityData)
+    ? densityData
+    : (densityData?.results || densityData?.data || []);
+
+  let sorted = densityRows.sort((a, b) => b.density - a.density);
   let cityRows = sorted.slice(0, 10);
   let ruralRows = sorted.slice(-10).reverse();
 
