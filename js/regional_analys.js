@@ -1,8 +1,16 @@
 addMdToPage(`
-<h2>Regionala skillnader mellan riksdagsvalen 2018 och 2022</h2>
-<p>På den här sidan analyserar jag hur valresultaten skiljer sig mellan tre svenska län:
-<b>Stockholm</b>, <b>Skåne</b> och <b>Norrbotten</b>. Målet är att undersöka om geografi påverkar
-hur människor röstar i riksdagsvalet.</p>
+<div style="max-width: 900px; margin: 0 auto 30px auto; padding: 32px; border-radius: 16px; background: linear-gradient(135deg,#0f172a,#1e293b); color:#fff; box-shadow:0 10px 25px rgba(0,0,0,0.15);">
+  <h2 style="margin:0 0 10px 0;">Regionala skillnader - Län mot län</h2>
+  <p style="font-size:18px; line-height:1.6; margin:0;">
+  <p>På den här sidan analyserar jag hur valresultaten skiljer sig mellan tre svenska län:
+    <b>Stockholm</b>, <b>Skåne</b> och <b>Norrbotten</b>. Målet är att undersöka om geografi påverkar
+    hur människor röstar i riksdagsvalet.
+  </p>
+</div>
+`);
+addMdToPage(`
+<div style="max-width: 900px; margin: 0 auto; display:grid; gap:18px;">
+  <div style="background: #c1aac7; padding:24px; border-radius:14px; box-shadow:0 12px 33px rgba(0,0,0,0.08);">
 <p>Jag visar resultat för både <b>2018</b> och <b>2022</b>, samt ett tredje diagram som visar 
 förändringen mellan åren. Det finns även en karta som visualiserar hur stödet för Sverigedemokraterna 
 har förändrats regionalt.</p>
@@ -15,24 +23,14 @@ Min hypotes är att:
 </ul>
 Jag tror därför att det finns tydliga <b>regionala skillnader</b> i hur människor röstar.
 Om det visar sig att skillnaderna inte är så stora som man kan tro, så är även det ett intressant resultat.</p>
-
-<h3>Välj visualisering</h3>
-<select id="viewSelector" style="padding:10px;font-size:16px;margin-bottom:20px;">
-  <option value="visu2018">Valresultat 2018</option>
-  <option value="visu2022">Valresultat 2022</option>
-  <option value="visuChange">Förändring 2018 → 2022</option>
-  <option value="visuMap">Karta: förändring SD</option>
-</select>
-<!-- OBS: GE HELT NYA ID:N SOM INTE KAN KROCKA -->
+</div>
 <div id="visu2018" style="width:900px;height:500px;"></div>
-<div id="visu2022" style="width:900px;height:500px;display:none;"></div>
-<div id="visuChange" style="width:900px;height:500px;display:none;"></div>
-<div id="visuMap" style="width:900px;height:500px;display:none;"></div>
+<div id="visu2022" style="width:900px;height:500px;"></div>
+<div id="visuChange" style="width:900px;height:500px;"></div>
+<div id="visuMap" style="width:900px;height:500px;"></div>
+
 `);
 
-// ======================================================
-// 1. LÄN SOM SKA JÄMFÖRAS (måste matcha geo-mysql exakt)
-// ======================================================
 const selectedCounties = ["Stockholm", "Skåne", "Norrbotten"];
 
 
@@ -41,22 +39,15 @@ const selectedCounties = ["Stockholm", "Skåne", "Norrbotten"];
 // ======================================================
 async function getKommunerI_Lan(lanNamn) {
   try {
-    dbQuery.use('geo-mysql');
-
+    dbQuery.use("geo-mysql");
     const raw = await dbQuery(
       `SELECT municipality FROM geoData WHERE county = '${lanNamn}'`
     );
-
     const rows = Array.isArray(raw)
       ? raw
       : (raw?.results || raw?.data || []);
-    if (!rows || rows.length === 0) {
-      console.warn("Inga kommuner hittades för län:", lanNamn);
-      return [];
-    }
     return [...new Set(rows.map(r => r.municipality))];
-  } catch (error) {
-    console.error("Fel vid hämtning av kommuner för län:", lanNamn, error);
+  } catch {
     return [];
   }
 };
@@ -160,8 +151,8 @@ async function buildChartRows() {
 // 7. Partifärger (officiella svenska färger)
 //-------------------------------------------------------------
 const partyColors = [
-  "#52BDEC", // M
-  "#FF0000", // S
+  "#7ccdf0", // M
+  "#fe4b4b", // S
   "#FFCC00", // SD
   "#009933", // C
   "#0066FF", // L
@@ -174,64 +165,107 @@ const partyColors = [
 function drawSingleChart(containerId, title, rows) {
   const data = new google.visualization.DataTable();
   data.addColumn("string", "Län");
-  data.addColumn("number", "M");
-  data.addColumn("number", "S");
-  data.addColumn("number", "SD");
-  data.addColumn("number", "C");
-  data.addColumn("number", "L");
-  data.addColumn("number", "KD");
-  data.addColumn("number", "V");
-  data.addColumn("number", "MP");
-  data.addRows(rows);
+
+  const parties = ["M", "S", "SD", "C", "L", "KD", "V", "MP"];
+  parties.forEach(p => {
+    data.addColumn("number", p);
+    data.addColumn({ type: "string", role: "tooltip" });
+  });
+
+  // Bygg rader med tooltip (%)
+  const formattedRows = rows.map(row => {
+    const län = row[0];
+    const values = row.slice(1);
+
+    const newRow = [län];
+    values.forEach(v => {
+      newRow.push(v);                // värdet
+      newRow.push(v.toFixed(1) + "%"); // tooltipen
+    });
+    return newRow;
+  });
+
+  data.addRows(formattedRows);
+
   const chart = new google.visualization.ColumnChart(
     document.getElementById(containerId)
   );
+
   chart.draw(data, {
-    title,
+    title: title,
     legend: { position: "top" },
-    colors: partyColors
+    colors: partyColors,
+    backgroundColor: "#c1aac7",
+    chartArea: { backgroundColor: "#c1aac7", width: "80%", height: "70%" },
+
+    vAxis: {
+      minValue: 0,
+      maxValue: 50,
+      ticks: [0, 10, 20, 30, 40, 50],
+      format: "#'%'"
+    }
   });
 }
 
+
 //-------------------------------------------------------------
-function drawMap(mapRows) {
-  const data = google.visualization.arrayToDataTable(mapRows);
-  const chart = new google.visualization.GeoChart(
-    document.getElementById("visuMap")
+
+function drawChangeChart(containerId, title, rows) {
+  const data = new google.visualization.DataTable();
+  data.addColumn("string", "Län");
+
+  const parties = ["M", "S", "SD", "C", "L", "KD", "V", "MP"];
+  parties.forEach(p => {
+    data.addColumn("number", p);
+    data.addColumn({ type: "string", role: "tooltip" });
+  });
+
+  const formattedRows = rows.map(row => {
+    const län = row[0];
+    const values = row.slice(1);
+    const newRow = [län];
+    values.forEach(v => {
+      newRow.push(v);
+      newRow.push(v.toFixed(1) + " %");
+    });
+    return newRow;
+  });
+
+  data.addRows(formattedRows);
+
+  const chart = new google.visualization.ColumnChart(
+    document.getElementById(containerId)
   );
 
   chart.draw(data, {
-    region: "SE",
-    resolution: "provinces",
-    colorAxis: { colors: ["#ffeecc", "#ff9900", "#cc6600"] }
+    title: title,
+    legend: { position: "top" },
+    colors: partyColors,
+    backgroundColor: "#c1aac7",
+    chartArea: { backgroundColor: "#c1aac7", width: "80%", height: "70%" },
+
+    vAxis: {
+      minValue: -5,
+      maxValue: 5,
+      ticks: [-5, 0, 5],
+      format: "#' %'"
+    }
   });
 }
 
-//-------------------------------------------------------------
-document.getElementById("viewSelector").addEventListener("change", (e) => {
-  const chosen = e.target.value;
-
-  ["visu2018", "visu2022", "visuChange", "visuMap"].forEach(id => {
-    document.getElementById(id).style.display =
-      (id === chosen ? "block" : "none");
-  });
-});
-
-//-------------------------------------------------------------
-// 9. Rita diagrammen
 //-------------------------------------------------------------
 google.charts.load("current", { packages: ["corechart", "geochart"], language: "sv" });
-google.charts.setOnLoadCallback(drawBothCharts);
-async function drawBothCharts() {
+google.charts.setOnLoadCallback(() => {
+  if (!chartsInitialized) {
+    chartsInitialized = true;
+    drawBothCharts();
+  }
+});
+
+google.charts.load("current", { packages: ["corechart"], language: "sv" });
+google.charts.setOnLoadCallback(async () => {
   const { rows2018, rows2022, changeRows } = await buildChartRows();
-  drawSingleChart("visu2018", "Valresultat 2018 per län (i %)", rows2018);
-  drawSingleChart("visu2022", "Valresultat 2022 per län (i %)", rows2022);
-  drawSingleChart("visuChange", "Förändring 2018 → 2022 (pp)", changeRows);
-  const mapRows = [
-    ["Region", "Förändring SD (%)"]
-  ];
-  changeRows.forEach(r => {
-    mapRows.push([r[0], r[3]]);
-  });
-  drawMap(mapRows);
-}
+  drawSingleChart("visu2018", "Valresultat 2018", rows2018);
+  drawSingleChart("visu2022", "Valresultat 2022", rows2022);
+  drawChangeChart("visuChange", "Förändring 2018 → 2022 ", changeRows);
+});
