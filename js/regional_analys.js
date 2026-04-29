@@ -11,32 +11,29 @@ background:linear-gradient(135deg,#0f172a,#1e293b);color:white;">
 </div>
 `);
 
-
 addMdToPage(`
 <div style="max-width:900px;margin:40px auto;padding:24px;background: #c0aec4;border-radius:14px;">
   <h3>Valresultatet 2018</h3>
-
   <p>
-    2018 års resultat visar tydliga skillnader mellan länen. 
-  <p>
-    <b>Stockholm</b> hade ett högre stöd för Miljöpartiet och Vänsterpartiet än de två andra länen,
-    samtidigt som Moderaterna och Socialdemokraterna låg något närmare varandra.
+    2018 års resultat visar tre tydligt olika politiska profiler.
   </p>
-
   <p>
-    <b>Skåne</b> utmärktes redan 2018 av ett betydligt starkare stöd för Sverigedemokraterna än
-    både Stockholm och Norrbotten, vilket påverkar hela partifördelningen i länet.
+    <b>Stockholm</b> hade ett starkare stöd för Miljöpartiet (6,1 %) och 
+    Moderaterna (24,3 %) än de andra länen. Medans Socialdemokraterna (23,1 %) 
+    och Sverigedemokraterna (12,8 %) låg lägre än i Skåne och Norrbotten.
   </p>
-
   <p>
-    <b>Norrbotten</b> hade Socialdemokraterna som klart största parti. 
-    Vänsterpartiet hade också en stabil position. 
-    Sverigedemokraterna låg lägre än i Skåne, men högre än i Stockholm.
+    <b>Skåne</b> utmärktes av ett mycket högt stöd för Sverigedemokraterna 
+    (23,4 %), klart högre än både Stockholm och Norrbotten. Vi ser även att Socialdemokraterna 
+    (25,2 %) var det Skåningarna röstade mest på.
   </p>
-
+  <p>
+    <b>Norrbotten</b> dominerades av Socialdemokraterna (41,7 %). 
+    Vänsterpartiet (10,7 %) hade en starkare position i länet jämförelsevis med de andra länen.
+    Moderaterna (12,8 %) och Miljöpartiet (2,8 %) hade däremot svagare stöd än i Stockholm och Skåne.
+  </p>
   <p>Diagrammet nedan visar valresultatet för 2018.</p>
 </div>
-
 <div style="display:flex;justify-content:center;margin-top:24px;margin-bottom:40px;">
   <div id="visu2018" style="width:900px;height:500px;"></div>
 </div>
@@ -46,27 +43,25 @@ addMdToPage(`
 addMdToPage(`
 <div style="max-width:900px;margin:40px auto;padding:24px;background: #c0aec4;border-radius:14px;">
   <h3>Valresultatet 2022</h3>
-
   <p>
-    Mellan 2018 och 2022 rör sig flera partier i samma riktning i alla län, men med olika styrka.
-    Sverigedemokraterna ökar i samtliga län, men fortfarande mest i Skåne där de redan hade
-    en stark position 2018.
+    Mellan 2018 och 2022 rör sig flera partier i liknande riktning i alla län, 
+    men utvecklingen är olika stark.
   </p>
-
   <p>
-    I <b>Stockholm</b> fortsätter Miljöpartiet att ligga högre än i Skåne och Norrbotten,
-    och även Vänsterpartiet har en relativt stark nivå.
+    I <b>Stockholm</b> ser vi att Socialdemokraterna tydligt går upp i röster
+    medan Moderaterna minskar. Och därför byter de plats i vilka som är det största partiet i länet.
   </p>
-
   <p>
-    I <b>Norrbotten</b> ligger Socialdemokraterna kvar på en betydligt högre nivå än i de andra
-    två länen, även om stödet minskar något. Sverigedemokraterna ökar här också, men inte lika
-    mycket som i Skåne.
+    I <b>Skåne</b> fortsätter Sverigedemokraterna att vara det starkaste av de tre 
+    länen och vi kan se att Moderaternas röster minskar även hos Skåningarna.
   </p>
-
+  <p>
+    I <b>Norrbotten</b> ligger Socialdemokraterna kvar på en extremt hög nivå 
+    (41,6 %). Samtidigt ökar Sverigedemokraterna kraftigt till (20,3 %) och 
+    Vänsterpartiet minskar tydligt till (7 %).
+  </p>
   <p>Diagrammet nedan visar valresultatet för 2022.</p>
 </div>
-
 <div style="display:flex;justify-content:center;margin-top:24px;margin-bottom:40px;">
   <div id="visu2022" style="width:900px;height:500px;"></div>
 </div>
@@ -76,28 +71,31 @@ addMdToPage(`
 addMdToPage(`
 <div style="max-width:900px;margin:40px auto;padding:24px;background: #c0aec4;border-radius:14px;">
   <h3>Förändringar mellan 2018 och 2022</h3>
-
   <p>
-    När förändringen i procentenheter jämförs framträder flera mönster. 
-    Sverigedemokraterna ökar i alla tre län, med den största ökningen i Skåne.
+    När förändringen i procentenheter jämförs framträder flera tydliga mönster.
   </p>
-
   <p>
-    Socialdemokraterna minskar i både Stockholm och Skåne, men ligger kvar på en hög nivå
-    i Norrbotten där tappet är mindre tydligt.
+    <b>Sverigedemokraterna</b> ökar i alla län och allra mest i
+    Norrbotten där ökningen är särskilt stark.
   </p>
-
   <p>
-    Miljöpartiet ökar framför allt i Stockholm. 
-    Vänsterpartiets förändringar är mer måttliga men rör sig uppåt i Stockholm och svagt i 
-    Norrbotten, medan utvecklingen i Skåne är mer blandad.
+    <b>Socialdemokraterna</b> har en ökning hos Stockholm och Skåne, med den största ökningen i 
+    Stockholm där de går om Moderaterna.
   </p>
-
   <p>
-    Diagrammet nedan visar förändringen i procentenheter (−10 till +10).
+    <b>Moderaterna</b> minskar både i Stockholm och Skåne, men ökar svagt i 
+    Norrbotten.
+  </p>
+  <p>
+    <b>Miljöpartiet</b> ökar i samtliga län, tydligast i Stockholm.
+  </p>
+  <p>
+    <b>Vänsterpartiet</b> minskar i alla län, särskilt i Norrbotten.
+  </p>
+  <p>
+    Diagrammet nedan visar förändringen i procentenheter mellan valen.
   </p>
 </div>
-
 <div style="display:flex;justify-content:center;margin-top:24px;margin-bottom:40px;">
   <div id="visuChange" style="width:900px;height:500px;"></div>
 </div>
@@ -106,28 +104,27 @@ addMdToPage(`
 
 addMdToPage(`
 <div style="max-width:900px;margin:40px auto;padding:24px;background: #a89ff1;border-radius:14px;">
-  <h3>Slutsatser</h3>
-
+  <h3>Slutsats</h3>
   <p>
-    Analysen visar att partistödet skiljer sig tydligt mellan de tre länen och att förändringarna
-    mellan valen inte utvecklas lika starkt överallt. Skåne fortsätter att vara det län där
-    Sverigedemokraterna har den tydligaste ökningen mellan valen.
+    Analysen visar att de tre länen har tydligt olika politiska profiler.
   </p>
-
   <p>
-    Stockholm utmärker sig med ett starkare stöd för Miljöpartiet och Vänsterpartiet,
-    samtidigt som Moderaterna och Socialdemokraterna är mer jämnstora.
+    Skåne är det län där Sverigedemokraterna står starkast och där ökningen 
+    mellan valen är mest betydande.
   </p>
-
   <p>
-    Norrbotten fortsätter att sticka ut genom Socialdemokraternas starka ställning och
-    mer stabila utveckling över tid. Sverigedemokraterna ökar också här, men betydligt mindre
-    än i Skåne.
+    Stockholm utmärker sig genom starkare stöd för Miljöpartiet och 
+    Socialdemokraterna, medan Moderaterna tappar en del röster mellan valen.
   </p>
-
   <p>
-    Sammantaget tyder resultaten på att lokala förutsättningar – som befolkning, ekonomi,
-    flyttmönster och historiska röstningsvanor – påverkar hur partistödet förändras över tid.
+    Norrbotten fortsätter att vara Socialdemokraternas starkaste region
+    även när man inte ser en ökning mellan valåren, 
+    samtidigt som Sverigedemokraterna växer kraftigt och Vänsterpartiet 
+    tappar stort.
+  </p>
+  <p>
+    Resultaten visar hur lokala förutsättningar som demografi, geografi 
+    och historiska röstningsmönster påverkar utvecklingen över tid.
   </p>
 </div>
 `);
@@ -203,6 +200,18 @@ async function buildChartRows() {
     const totals = summeraPerParti(votes);
     const total2018 = Object.values(totals).reduce((sum, p) => sum + (p.r2018 || 0), 0);
     const total2022 = Object.values(totals).reduce((sum, p) => sum + (p.r2022 || 0), 0);
+
+    console.log("====", county, "====");
+    for (const parti in totals) {
+      const p = totals[parti];
+      console.log(
+        parti,
+        "2018:",
+        ((p.r2018 / total2018) * 100).toFixed(2) + "%",
+        "2022:",
+        ((p.r2022 / total2022) * 100).toFixed(2) + "%"
+      );
+    }
 
     // Rader i procent för 2018
     rows2018.push([

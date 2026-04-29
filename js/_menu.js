@@ -1,4 +1,4 @@
-createMenu('Statistik riksdagsval geografi.', [
+createMenu('Riksdagsval – geografisk statistik', [
   { name: 'Introduktion', script: 'startpage.js' },
   { name: 'Regionala skillnader', script: 'regional_analys.js' },
   { name: 'Stad vs Landsbygd', script: 'tathet_analys.js' },
