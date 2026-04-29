@@ -1,12 +1,12 @@
 const partiFarger = {
-  'Arbetarepartiet-Socialdemokraterna': '#e31b23',
-  'Moderaterna': '#1b49dd',
-  'Sverigedemokraterna': '#f7dd00',
+  'Moderaterna': '#7ccdf0',
+  'Arbetarepartiet-Socialdemokraterna': '#fe4b4b',
+  'Sverigedemokraterna': '#FFCC00',
   'Centerpartiet': '#009933',
-  'Vänsterpartiet': '#b10000',
-  'Kristdemokraterna': '#003366',
-  'Liberalerna': '#6bb7ec',
-  'Miljöpartiet de gröna': '#83cf39'
+  'Liberalerna': '#0066FF',
+  'Kristdemokraterna': '#003399',
+  'Vänsterpartiet': '#b41f15',
+  'Miljöpartiet de gröna': '#83CF39'
 };
 
 addToPage(`
