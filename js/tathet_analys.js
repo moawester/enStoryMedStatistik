@@ -40,20 +40,23 @@ function parseNumber(value) {
 function average(arr) {
   return arr.length ? arr.reduce((a, b) => a + b, 0) / arr.length : 0;
 }
-
 try {
   dbQuery.use("tatorter-sqlite");
 
-  let densityData = await dbQuery(`
+  let densityDataRaw = await dbQuery(`
     SELECT municipalityName AS kommun, populationDensity2022 AS density
     FROM municipality_statistics
   `);
 
-  let densityRows = Array.isArray(densityData)
-    ? densityData
-    : (densityData?.results || densityData?.data || []);
+  let densityData = Array.isArray(densityDataRaw)
+    ? densityDataRaw
+    : (densityDataRaw?.results || densityDataRaw?.data || []);
 
-  let sorted = densityRows.sort((a, b) => b.density - a.density);
+  if (!densityData || densityData.length === 0) {
+    throw new Error("Ingen täthetsdata hittades.");
+  }
+
+  let sorted = densityData.sort((a, b) => b.density - a.density);
   let cityRows = sorted.slice(0, 10);
   let ruralRows = sorted.slice(-10).reverse();
 
