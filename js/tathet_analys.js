@@ -40,6 +40,7 @@ function parseNumber(value) {
 function average(arr) {
   return arr.length ? arr.reduce((a, b) => a + b, 0) / arr.length : 0;
 }
+
 try {
   dbQuery.use("tatorter-sqlite");
 
@@ -56,7 +57,7 @@ try {
     throw new Error("Ingen täthetsdata hittades.");
   }
 
-  let sorted = densityData.sort((a, b) => b.density - a.density);
+  let sorted = densityData.sort((a, b) => Number(b.density) - Number(a.density));
   let cityRows = sorted.slice(0, 10);
   let ruralRows = sorted.slice(-10).reverse();
 
@@ -86,13 +87,17 @@ try {
 
   dbQuery.use("riksdagsval-neo4j");
 
-  let voteData = await dbQuery(`
+  let voteDataRaw = await dbQuery(`
     MATCH (p:Partiresultat)
     RETURN p.kommun AS kommun,
            p.parti AS parti,
            p.roster2018 AS roster2018,
            p.roster2022 AS roster2022
   `);
+
+  let voteData = Array.isArray(voteDataRaw)
+    ? voteDataRaw
+    : (voteDataRaw?.results || voteDataRaw?.data || []);
 
   if (!voteData || !voteData.length) {
     throw new Error("Ingen valdata hittades i Neo4j.");
@@ -262,4 +267,4 @@ try {
 
 ${e.message}
 `);
-} 
+}
