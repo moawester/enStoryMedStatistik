@@ -1,77 +1,103 @@
-Röstar vi olika beroende på var vi bor?
-Detta projekt undersöker hur röstningen förändrats mellan riksdagsvalen 2018 och 2022, och om geografi påverkar hur människor röstar. Syftet är att förstå om Sverige är på väg mot större politiska skillnader mellan olika typer av områden.
+# Röstar vi olika beroende på var vi bor?
 
-Frågeställning
-Finns det skillnader mellan stad och landsbygd?
-Är vissa partier starkare i olika delar av landet?
-Har dessa skillnader förändrats över tid?
-Hypotes
-Vi utgår från att människor röstar olika beroende på var de bor. Skillnader i livsvillkor, ekonomi, utbildning och demografi påverkar sannolikt röstningen.
+Detta projekt undersöker hur röstningen förändrats mellan riksdagsvalen 2018 och 2022, och om geografi påverkar hur människor röstar.
 
-Vi förväntar oss att förändringen i partistöd skiljer sig mellan geografiska områden – särskilt mellan stad och landsbygd.
+Syftet är att förstå om Sverige visar tecken på ökade politiska skillnader mellan olika typer av områden.
 
-Sverige i fokus
-Regionala skillnader
-Vi jämför olika län för att se hur partistöd varierar geografiskt.
+---
 
-Stad & landsbygd
-Vi analyserar hur befolkningstäthet påverkar förändringar i röstningen, och om urbana respektive rurala områden utvecklas åt olika håll.
+## Frågeställning
 
-Geografiska trender
-Vi identifierar var i landet de största politiska förändringarna har skett mellan 2018 och 2022.
+- Finns det skillnader mellan stad och landsbygd?
+- Är vissa partier starkare i olika delar av landet?
+- Har dessa skillnader förändrats över tid?
 
-Metod
-Mätning
-Vi beräknar förändring i procentenheter mellan valåren 2018 och 2022.
+---
 
-Positivt värde = partiet har ökat sitt stöd
-Negativt värde = partiet har minskat sitt stöd
-Teknik & verktyg
-Databaser:
+## Hypotes
 
-Neo4j för valstatistik
-MongoDB för demografiska och ekonomiska data
-SQLite för befolkningstäthet och länsinfo
-DBeaver som hanteringsmiljö för geodata
-Visualisering – Google Charts:
-Diagram och grafer genereras med Google Charts. Detta gör det möjligt att:
+Vi utgår från att människor röstar olika beroende på var de bor.
 
-jämföra partiers utveckling mellan olika områden
-visa skillnader mellan län
-visualisera trender över tid
-plotta samband mellan t.ex. befolkningstäthet och röstförändring
-Google Charts valdes eftersom det är lätt att integrera, stödjer interaktiva grafer och passar bra för webbaserade presentationer av data.
+Skillnader i livsvillkor, ekonomi, utbildning och demografi påverkar sannolikt röstbeteendet.  
+Vi förväntar oss därför att förändringen i partistöd skiljer sig mellan olika geografiska områden – särskilt mellan stad och landsbygd.
 
-Syfte
-Syftet är att undersöka om geografi är en viktig faktor för hur svenska väljare ändrar sitt röstbeteende. Projektet söker svar på om Sverige är på väg mot ökade politiska skillnader mellan regioner, mellan stad och landsbygd, eller mellan kommuner med olika befolkningsstruktur.
+---
 
-Datakällor och datakvalitet
-Länsinfo (SQLite)
-Information om Sveriges län används som grund för jämförelser mellan regioner.
-Trovärdighet: Allmänt etablerad fakta.
-Datakvalitet: Stabil översikt över länens struktur.
+## Analysens delar
 
-Demografi och inkomster (MongoDB)
-Data om medelålder och medel-/medianinkomst på kommunnivå.
-Trovärdighet: Mycket hög — baserad på SCB.
-Datakvalitet: Detaljerad och välstrukturerad, men beskrivande.
+Projektet är uppdelat i tre perspektiv:
 
-Riksdagsval 2018 & 2022 (Neo4j)
-Officiella valresultat på kommunnivå.
-Trovärdighet: Mycket hög — myndighetsdata.
-Datakvalitet: Exakta siffror, men visar inte orsaker bakom röstning.
+### Regionala skillnader
+Jämförelse mellan olika län för att se hur partistöd varierar geografiskt.
 
-Geodata (DBeaver)
-Kommun- och tätortsdata för geografisk analys.
-Trovärdighet: Troligen baserat på nationell kartdata.
-Datakvalitet: Bra för geografisk struktur, men ursprunget inte helt kartlagt.
+### Stad och landsbygd
+Analys av hur befolkningstäthet påverkar förändringar i röstningen.
 
-Befolkningstäthet (SCB / tätorter-sqlite)
-Används för att dela in kommuner i stad och landsbygd.
-Trovärdighet: Mycket hög — SCB.
-Datakvalitet: Ger tydlig bild av täthet men fångar inte bakomliggande faktorer som ekonomi, utbildning eller ålder.
+### Geografiska trender
+Identifiering av var i landet de största förändringarna har skett mellan 2018 och 2022.
 
-Begränsningar
-Analysen fokuserar på geografi och demografi.
-Faktorer som inkomst, ålder eller utbildning täcks inte fullt ut i alla dataset.
-Resultaten kan visa samband men inte bevisa exakta orsaker.
+---
+
+## Metod
+
+Vi mäter förändringar i **procentenheter** mellan valen 2018 och 2022.
+
+- Positivt värde = partiet har ökat sitt stöd  
+- Negativt värde = partiet har minskat sitt stöd  
+
+---
+
+## Teknik & verktyg
+
+### Databaser
+- Neo4j – används för att lagra och analysera valdata  
+- MongoDB – används för demografiska och ekonomiska data  
+- SQLite – används för befolkningstäthet och geografisk information  
+
+### Verktyg
+- DBeaver – används för att hantera och utforska databaser  
+
+### Visualisering
+- Google Charts – används för att skapa diagram och visualisera data  
+
+---
+
+## Datakällor och datakvalitet
+
+### SCB – Riksdagsval 2018 & 2022
+Officiella valresultat på kommunnivå.  
+**Trovärdighet:** Mycket hög (statlig myndighet)  
+**Datakvalitet:** Exakta siffror, men visar inte orsaker bakom röstning  
+
+---
+
+### SCB – Befolkning och befolkningstäthet
+Används för att dela in kommuner i stad och landsbygd.  
+**Trovärdighet:** Mycket hög  
+**Datakvalitet:** Ger tydlig bild av täthet, men fångar inte bakomliggande faktorer  
+
+---
+
+### SCB – Demografi och socioekonomiska faktorer
+Data om exempelvis ålder, inkomst och utbildningsnivå.  
+**Trovärdighet:** Mycket hög  
+**Datakvalitet:** Relevant för att förstå skillnader i röstbeteende, men används här främst som förklarande faktor  
+
+---
+
+## Begränsningar
+
+- Analysen fokuserar främst på geografiska faktorer  
+- Alla socioekonomiska variabler analyseras inte fullt ut  
+- Resultaten visar samband, men inte säkra orsaker  
+
+---
+
+## Slutsats
+
+Projektet visar att röstningen i Sverige skiljer sig beroende på geografi.
+
+Det finns tydliga skillnader mellan stad och landsbygd samt mellan olika regioner.  
+Samtidigt påverkas röstbeteendet av flera faktorer, vilket innebär att geografi inte ensam kan förklara resultaten.
+
+Detta visar att geografi är en viktig faktor att ta hänsyn till vid analys av politiska mönster i Sverige. 
