@@ -41,7 +41,7 @@ addMdToPage(`
   </p>
   <p>
     <b>Norrbotten</b> dominerades av Socialdemokraterna (41,7 %). 
-    Vänsterpartiet (10,7 %) hade en starkare position i länet jämförelsevis med de andra länen.
+    Vänsterpartiet (10,7 %) hade en starkare position i länet jämförelsevis med de andra 2 länen.
     Moderaterna (12,8 %) och Miljöpartiet (2,8 %) hade däremot svagare stöd än i Stockholm och Skåne.
   </p>
   <p>Diagrammet nedan visar valresultatet för 2018.</p>
@@ -56,7 +56,7 @@ addMdToPage(`
 <div style="max-width:900px;margin:40px auto;padding:24px;background: #c0aec4;border-radius:14px;">
   <h3>Valresultatet 2022</h3>
   <p>
-    Mellan 2018 och 2022 rör sig flera partier i liknande riktning i alla län, 
+    Mellan 2018 och 2022 rör sig flera partier i liknande riktning i alla 3 län, 
     men utvecklingen är olika stark.
   </p>
   <p>
@@ -87,7 +87,7 @@ addMdToPage(`
     När förändringen i procentenheter jämförs framträder flera tydliga mönster.
   </p>
   <p>
-    <b>Sverigedemokraterna</b> ökar i alla län och allra mest i
+    <b>Sverigedemokraterna</b> ökar i alla 3 län och allra mest i
     Norrbotten där ökningen är särskilt stark.
   </p>
   <p>
@@ -99,10 +99,10 @@ addMdToPage(`
     Norrbotten.
   </p>
   <p>
-    <b>Miljöpartiet</b> ökar i samtliga län, tydligast i Stockholm.
+    <b>Miljöpartiet</b> ökar i samtliga 3 län, tydligast i Stockholm.
   </p>
   <p>
-    <b>Vänsterpartiet</b> minskar i alla län, särskilt i Norrbotten.
+    <b>Vänsterpartiet</b> minskar i de 3 länen, särskilt i Norrbotten.
   </p>
   <p>
     Diagrammet nedan visar förändringen i procentenheter mellan valen.
