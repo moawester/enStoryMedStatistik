@@ -12,6 +12,18 @@ background:linear-gradient(135deg,#0f172a,#1e293b);color:white;">
 `);
 
 addMdToPage(`
+<div style="max-width: 900px; margin: 0 auto; display:grid; gap:18px;">
+  <div style="background:#ffffff; padding:24px; border-radius:14px; box-shadow:0 4px 12px rgba(0,0,0,0.08);">
+    <h2 style="margin-top:0;">Hypotes</h2>
+<p>
+    Den centrala frågan är hur partistödet varierar mellan Stockholm, Skåne och Norrbotten, och hur dessa skillnader utvecklats över tid.
+    Vi förväntar oss att Stockholm, som är mer urbaniserat och har en yngre befolkning, kommer att ha ett starkare stöd för partier som Miljöpartiet och Socialdemokraterna, medan Skåne och Norrbotten, som har mer landsbygdsområden och äldre befolkning, kan visa starkare stöd för Sverigedemokraterna och Moderaterna.
+    Vi tror också att förändringarna mellan 2018 och 2022 kan vara mer uttalade i Skåne och Norrbotten, där migration kan ha större påverkan på väljarbeteendet.
+  </p>
+</div>
+`);
+
+addMdToPage(`
 <div style="max-width:900px;margin:40px auto;padding:24px;background: #c0aec4;border-radius:14px;">
   <h3>Valresultatet 2018</h3>
   <p>
