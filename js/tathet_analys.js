@@ -12,7 +12,7 @@ addToPage(`
 <div style="max-width: 900px; margin: 0 auto; display:grid; gap:18px;">
   <div style="background:#ffffff; padding:24px; border-radius:14px; box-shadow:0 4px 12px rgba(0,0,0,0.08);">
     <h2 style="margin-top:0;">Metod och hypotes</h2>
-    <p>Kommunerna är utvalda baserat på befolkningstäthet från SCB. För att sidan ska fungera stabilt hos alla i gruppen används urvalet direkt i koden.</p>
+    <p>Kommunerna är utvalda baserat på befolkningstäthet från SCB. </p>
     <p>Vi delar upp kommunerna i två grupper:</p>
     <ul>
       <li>de 10 mest tätbefolkade kommunerna (stad)</li>
