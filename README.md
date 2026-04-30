@@ -54,13 +54,14 @@ Vi mäter förändringar i **procentenheter** mellan valen 2018 och 2022.
 - Neo4j – används för att lagra och analysera valdata  
 - MongoDB – används för demografiska och ekonomiska data  
 - SQLite – används för befolkningstäthet och geografisk information  
-- MySQL (SQL-baserad databas) – representerar den relationella datamodellen i projektet  
+- MySQL – används för att lagra och hantera geografisk data (t.ex. kommuner och regioner)  
 
 ### Verktyg
 
-- DBeaver – används för att hantera och utforska databaser   
+- DBeaver – används för att hantera och utforska databaser  
 
 ### Visualisering
+
 - Google Charts – används för att skapa diagram och visualisera data  
 
 ---
