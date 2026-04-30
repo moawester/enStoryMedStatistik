@@ -62,6 +62,7 @@ const valtParti = sessionStorage.getItem('valtParti') || partier[0];
 addMdToPage(`
 ## Välj parti
 <div id="dropdown"></div>
+
 ---`);
 
 const select = document.createElement('select');
