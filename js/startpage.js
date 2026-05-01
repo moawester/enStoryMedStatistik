@@ -7,11 +7,11 @@ color:white; text-align:center; box-shadow:0 15px 30px rgba(0,0,0,0.2);">
 
   <p style="font-size:18px; margin-top:15px; line-height:1.6;">
     Vi undersöker hur röstningen förändrats mellan riksdagsvalen 2018 och 2022,
-    och om geografi spelar en roll.
+    och om geografi och ekonomiska skillnader spelar en roll.
   </p>
 
   <p style="opacity:0.8; margin-top:10px;">
-    Detta väcker frågan om Sverige håller på att bli mer politiskt uppdelat beroende på var man bor.
+    Detta väcker frågan om Sverige håller på att bli mer politiskt och ekonomiskt uppdelat beroende på var man bor.
   </p>
 
 </div>
@@ -26,6 +26,7 @@ addToPage(`
       <li>Finns det skillnader mellan stad och landsbygd?</li>
       <li>Är vissa partier starkare i olika delar av landet?</li>
       <li>Har dessa skillnader förändrats över tid?</li>
+      <li>Kan ekonomiska skillnader mellan kommuner kopplas till röstförändringar?</li>
     </ul>
   </div>
 
@@ -38,7 +39,7 @@ addToPage(`
     </p>
     <p>
       Vi förväntar oss därför att förändringen i partistöd skiljer sig mellan olika delar av landet,
-      särskilt mellan stad och landsbygd.
+      särskilt mellan stad och landsbygd samt mellan kommuner med olika ekonomiska förutsättningar.
     </p>
   </div>
 
@@ -75,9 +76,9 @@ function drawMap() {
 addToPage(`
 <div style="max-width:1000px; margin:30px auto;">
 
-  <h2 style="text-align:center;">Analysens tre delar</h2>
+  <h2 style="text-align:center;">Analysens fyra delar</h2>
 
-  <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:20px;">
+  <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:20px; margin-top:20px;">
 
     <div style="background:white; padding:20px; border-radius:14px; box-shadow:0 4px 10px rgba(0,0,0,0.08);">
       <h3>Regionala skillnader</h3>
@@ -94,6 +95,11 @@ addToPage(`
       <p>Var i landet de största förändringarna har skett.</p>
     </div>
 
+    <div style="background:white; padding:20px; border-radius:14px; box-shadow:0 4px 10px rgba(0,0,0,0.08);">
+      <h3>Inkomst och röstning</h3>
+      <p>Hur ekonomiska skillnader mellan kommuner kan kopplas till politiska mönster.</p>
+    </div>
+
   </div>
 
 </div>
@@ -104,15 +110,16 @@ addToPage(`
 
   <h2>Metod & syfte</h2>
 
-  <p><b>Metod:</b> Vi mäter förändringar i procentenheter mellan 2018 och 2022.</p>
+  <p><b>Metod:</b> Vi mäter förändringar i procentenheter mellan 2018 och 2022 för valresultat, och jämför även nettoinkomst mellan samma år.</p>
 
   <ul>
-    <li>Positivt värde = partiet har ökat sitt stöd</li>
-    <li>Negativt värde = partiet har minskat sitt stöd</li>
+    <li>Positivt värde i valdata = partiet har ökat sitt stöd</li>
+    <li>Negativt värde i valdata = partiet har minskat sitt stöd</li>
+    <li>Inkomstdatan visar förändring i tkr, alltså tusen kronor</li>
   </ul>
 
   <p>
-    <b>Syfte:</b> Att undersöka om geografi är en viktig faktor för hur röstningen förändras,
+    <b>Syfte:</b> Att undersöka om geografi och ekonomi är viktiga faktorer för hur röstningen förändras,
     och om Sverige visar tecken på ökande politiska skillnader mellan olika områden.
   </p>
 
